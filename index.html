@@ -34,37 +34,37 @@
         <tr><td>4</td><td>JCVD</td></tr>
         <tr><td>5</td><td>Steven</td></tr>
     </table>
-  <div class="input-container">
-      <label for="slotNumber">Click to check another slot: </label>
+    <div class="input-container">
+      <label id="slotNumber">Click to check another slot: </label>
       <button class="button" onclick="checkName()">Check Name</button>
+    </div>
+    <div id="message" class="message"></div>
   </div>
-  <div id="message" class="message"></div>
-  
-  <script>
-    const Contacts = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"];
-
-    function checkName() {
-        const messageDiv = document.getElementById("message");
-
-        while (true) {
-            const slotNumber = parseInt(prompt("Please provide slot number associated with a name (0-5): "));
-
-            if (slotNumber >= 0 && slotNumber < Contacts.length) {
-                alert(`You selected ${Contacts[slotNumber]}.`);
-            } else {
-                messageDiv.textContent = "Name not found. Please try again.";
-            }
-
-            continueSearch = prompt("Would you like to search for another name? (y/n)");
-            if(continueSearch == "n"){
-                break;
-            }
-        }
-
-        messageDiv.textContent = "Thank you for using the Contacts DB!";
-    }
-    
-  </script>
 </body>
+  
+<script> 
+  const Contacts = ["Arnold", "Sly", "Dwayne", "Vin", "JCVD", "Steven"];
+
+  function checkName() {
+    const messageDiv = document.getElementById("message");
+
+    while (true) {
+      const slotNumber = parseInt(prompt("Please provide slot number associated with a name (0-5): "));
+
+      if (slotNumber >= 0 && slotNumber < Contacts.length) {
+        alert(`You selected ${Contacts[slotNumber]}.`);
+        messageDiv.textContent = `You selected ${Contacts[slotNumber]}.`;
+      } else {
+          messageDiv.textContent = "Name not found. Please try again.";
+      }
+
+      continueSearch = prompt("Would you like to search for another name? (y/n)");
+      if(continueSearch == "n"){
+          break;
+      }
+    }
+    messageDiv.textContent = "Thank you for using the Contacts DB!";
+  }  
+</script>
 
 </html>
